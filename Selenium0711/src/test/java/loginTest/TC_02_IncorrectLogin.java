@@ -6,6 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import commonMethods.CommonMethods;
 import driverSetup.driverSetup;
 import globalVariables.GlobalVariables;
 import navigationPages.LoginPage;
@@ -31,6 +32,7 @@ public class TC_02_IncorrectLogin {
 	    
 	@AfterTest
     public void closeDriver() {
+		CommonMethods.takeScreenshot(driver, "TC_02_IncorrectLogin");
     	driver.quit();
     }
 }

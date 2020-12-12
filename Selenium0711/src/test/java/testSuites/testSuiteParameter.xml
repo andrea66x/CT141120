@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RegressionAutomatedQA" parallel="tests" thread-count="1">
+
+  <test name="TC_06_ParameterLogin">
+  	<parameter name="user" value="Admin" />
+  	<parameter name="password" value="admin123" />
+    <classes>
+      <class name="loginTest.TC_06_ParameterLogin"/> <!-- Ubicacion -->
+    </classes>
+  </test>
+  
+  <test name="TC_06_ParameterLogin_SuperUser">
+  	<parameter name="user" value="SuperUser" />
+  	<parameter name="password" value="SuperUser" />
+    <classes>
+      <class name="loginTest.TC_06_ParameterLogin"/> <!-- Ubicacion -->
+    </classes>
+  </test>
+
+</suite>

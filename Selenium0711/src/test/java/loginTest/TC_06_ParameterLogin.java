@@ -1,43 +1,36 @@
 package loginTest;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commonMethods.CommonMethods;
 import driverSetup.driverSetup;
 import globalVariables.GlobalVariables;
-import navigationPages.DashboardPage;
 import navigationPages.LoginPage;
 
-public class TC_03_Logout {
+public class TC_06_ParameterLogin {
 	// Declarar e inicializar un objeto del tipo WebDriver para usarlo en nuestra Test Class
 	WebDriver driver = driverSetup.setupDriver();
-		
+	
 	// Login PageObject
 	LoginPage login = new LoginPage(driver);
-	DashboardPage dashboard = new DashboardPage(driver);
 	
 	@BeforeTest
 	public void startWebDriver() {
 		driver.get(GlobalVariables.HOME_PAGE);
 		driver.manage().window().maximize();
 	}
-		
-	@Test
-    public void TC_03() throws InterruptedException {
-		// Step 1: Login
-		login.login(GlobalVariables.USER_ADMIN, GlobalVariables.PASSWORD_ADMIN);
-		
-		// Step 2: Logout
-		dashboard.logout();
+			
+    @Test
+    @Parameters({"user","password"})
+    public void TC_06(String user, String password) {
+    	login.login(user, password);
     }
-	    
-	@AfterTest
+    
+    @AfterTest
     public void closeDriver() {
-		CommonMethods.takeScreenshot(driver, "TC_03_Logout");
     	driver.quit();
     }
 }
